@@ -112,8 +112,18 @@ function pow(base, exponent) {
 //     1-dimensional array: ['some data']
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
-function flatten(data) {}
+function flatten(data) {
+  // if we are expecting other data types
+  //  Object.prototype.toString.call(data)
 
+  if (!Array.isArray(data)) return [data];
+  let allElements = [];
+  data.forEach((el) => {
+    let flattened = flatten(el);
+    allElements.push(...flattened);
+  });
+  return allElements;
+}
 // Write a function, fileFinder(directories, targetFile), that accepts an object representing directories and a string respresenting a filename.
 // The function should return true, if the file is contained anywhere in the given directories.
 // Note that directory names will begin with '/', but file names will not.
