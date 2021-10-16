@@ -180,7 +180,14 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'trixie_lou.jpeg'));     // => '/images/pets/trixie_lou.jpeg'
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
-function pathFinder(directories, targetFile) {}
+function pathFinder(directories, targetFile) {
+  for (let key in directories) {
+    if (key === targetFile) return "/" + targetFile;
+    let subPath = pathFinder(directories[key], targetFile);
+    if (subPath != null) return key + subPath;
+  }
+  return null;
+}
 
 module.exports = {
   lucasNumber,
