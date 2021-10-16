@@ -54,8 +54,11 @@ function sumArray(array) {
 // reverseString("c")           // => "c"
 // reverseString("internet")    // => "tenretni"
 // reverseString("friends")     // => "sdneirf"
-function reverseString(str) {}
-
+function reverseString(str) {
+  if (str.length === 0) {
+    return "";
+  } else return reverseString(str.slice(1)) + str[0];
+}
 // Write a function, pow(base, exponent), that takes in two numbers.
 // The function should calculate the base raised to the exponent power.
 //
